@@ -27,23 +27,23 @@
             if (permissionState === 'granted') {
                 console.log('OK');
                 // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                // window.addEventListener('devicemotion', event => {
-                //     var hoge = document.querySelector("#txt");
-                //     var absolute = event.absolute;
-                //     var alpha    = event.alpha;
-                //     var beta     = event.beta;
-                //     var gamma    = event.gamma;
-                //     hoge.innerText =
-                //     "absolute: " + absolute + "<br>"
-                //     + "alpha: " + alpha + "<br>"
-                //     + "beta: " + beta + "<br>"
-                //     + "gamma: " + gamma + "<br>";
-                // });
+                window.addEventListener('devicemotion', event => {
+                    var hoge = document.querySelector("#txt");
+                    var absolute = event.absolute;
+                    var alpha    = event.alpha;
+                    var beta     = event.beta;
+                    var gamma    = event.gamma;
+                    hoge.innerText =
+                    "absolute: " + absolute + "<br>"
+                    + "alpha: " + alpha + "<br>"
+                    + "beta: " + beta + "<br>"
+                    + "gamma: " + gamma + "<br>";
+                });
             } else {
                 // 許可を得られなかった場合の処理
             }
             }).catch(console.error) // https通信でない場合などで許可を取得できなかった場合
-                console.log('エラー');
+                // console.log('エラー');
 
             } else {
                 console.log('上記以外のブラウザ');
