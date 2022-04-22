@@ -23,21 +23,22 @@
             DeviceMotionEvent.requestPermission()
             .then(permissionState => {
                 console.log('permissionState', permissionState);
-                
+
             if (permissionState === 'granted') {
+                console.log('OK');
                 // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                window.addEventListener('devicemotion', event => {
-                    var hoge = document.querySelector("#txt");
-                    var absolute = event.absolute;
-                    var alpha    = event.alpha;
-                    var beta     = event.beta;
-                    var gamma    = event.gamma;
-                    hoge.innerText =
-                    "absolute: " + absolute + "<br>"
-                    + "alpha: " + alpha + "<br>"
-                    + "beta: " + beta + "<br>"
-                    + "gamma: " + gamma + "<br>";
-                });
+                // window.addEventListener('devicemotion', event => {
+                //     var hoge = document.querySelector("#txt");
+                //     var absolute = event.absolute;
+                //     var alpha    = event.alpha;
+                //     var beta     = event.beta;
+                //     var gamma    = event.gamma;
+                //     hoge.innerText =
+                //     "absolute: " + absolute + "<br>"
+                //     + "alpha: " + alpha + "<br>"
+                //     + "beta: " + beta + "<br>"
+                //     + "gamma: " + gamma + "<br>";
+                // });
             } else {
                 // 許可を得られなかった場合の処理
             }
