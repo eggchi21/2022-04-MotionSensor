@@ -11,12 +11,14 @@
     <canvas id="canvas" width="300" height="400"></canvas>  <!-- ★絵を描くcanvas要素 -->
      
     <script>
+        console.log('init');
     var alpha = 0, beta = 0, gamma = 0;             // ジャイロの値を入れる変数を3個用意
     var canvas = document.getElementById("canvas"); // ★canvas要素を取得 
     var context = canvas.getContext("2d");          // ★絵を描く部品を取得
      
     // ジャイロセンサの値が変化したら実行される deviceorientation イベント
     window.addEventListener("deviceorientation", (dat) => {
+        console.log('sensor');
         alpha = dat.alpha;  // z軸（表裏）まわりの回転の角度（反時計回りがプラス）
         beta  = dat.beta;   // x軸（左右）まわりの回転の角度（引き起こすとプラス）
         gamma = dat.gamma;  // y軸（上下）まわりの回転の角度（右に傾けるとプラス）
