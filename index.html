@@ -27,7 +27,7 @@
             if (permissionState === 'granted') {
                 console.log('OK');
                 // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                window.addEventListener('devicemotion', event => {
+                window.addEventListener('devicemotion', (event) => {
                     console.log('event', event);
                     var hoge = document.querySelector("#txt");
                     var absolute = event.absolute;
