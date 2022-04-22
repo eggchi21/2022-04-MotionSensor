@@ -40,7 +40,7 @@
                 // 許可を得られなかった場合の処理
             }
             }).catch(console.error) // https通信でない場合などで許可を取得できなかった場合
-                console.log('エラー');
+                console.log('エラー' + permissionState + 'です');
 
             } else {
                 console.log('上記以外のブラウザ');
