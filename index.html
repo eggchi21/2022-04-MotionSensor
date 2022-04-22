@@ -13,22 +13,22 @@
      
     <script>
         console.log('init');
-        const requestDeviceMotionPermission = () => {
+        const requestDeviceOrientationPermission = () => {
         if (
-            DeviceMotionEvent &&
-            typeof DeviceMotionEvent.requestPermission === 'function'
+            DeviceOrientationEvent &&
+            typeof DeviceOrientationEvent.requestPermission === 'function'
         ) {
             // iOS 13+ の Safari
             // 許可を取得
-            DeviceMotionEvent.requestPermission()
+            DeviceOrientationEvent.requestPermission()
             .then(permissionState => {
                 console.log('permissionState', permissionState);
 
             if (permissionState === 'granted') {
                 console.log('OK');
                 // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                window.addEventListener('devicemotion', (event) => {
-                    console.log('event', event);
+                window.addEventListener('deviceorientation', (event) => {
+                    // console.log('event', event);
                     var hoge = document.querySelector("#txt");
                     var absolute = event.absolute;
                     var alpha    = event.alpha;
@@ -51,10 +51,9 @@
                 // 上記以外のブラウザ
             }
         }
-
-        // ボタンクリックでrequestDeviceMotionPermission実行
-        const startButton = document.getElementById("start-button");
-        startButton.addEventListener('click', requestDeviceMotionPermission, false);
+    // ボタンクリックでrequestDeviceOrientationPermission実行
+    const startButton = document.getElementById("start-button")
+    startButton.addEventListener('click', requestDeviceOrientationPermission, false)
 
 
     // var alpha = 0, beta = 0, gamma = 0;             // ジャイロの値を入れる変数を3個用意
