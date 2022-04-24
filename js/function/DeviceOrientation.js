@@ -27,7 +27,6 @@ export class DeviceOrientation {
             // 許可を取得
             DeviceOrientationEvent.requestPermission()
                 .then(permissionState => {
-                    console.log('permissionState', permissionState);
 
                     if (permissionState === 'granted') {
                         // 許可を得られた場合、devicemotionをイベントリスナーに追加
