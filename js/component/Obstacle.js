@@ -18,16 +18,6 @@ export class Obstacle extends Ball {
         // obstacle.y = Math.random() * (0 + this.canvas.height) - this.canvas.height; // 隕石のy座標
         this.radius = Math.random() * (this.canvas.width / sum_count / 2 - 10) + 10;   // 隕石の半径
         this.speed = Math.random() * (15 - 1) + 1;                                  // 隕石の速さ
-        // this.counts = 5;
-        // for(var i = 0; i < this.counts; i++) {
-        //     const obstacle = new Ball();
-        //     obstacle.x = i * this.canvas.area.width / this.counts + (this.canvas.area.width / this.counts / 2);
-        //     obstacle.color = "rgb(0, 0, 0)";
-        //     obstacle.y = Math.random() * (0 + this.canvas.area.height) - this.canvas.area.height; // 隕石のy座標
-        //     obstacle.radius = Math.random() * (this.canvas.area.width / this.counts / 2 - 10) + 10;   // 隕石の半径
-        //     obstacle.sp = Math.random() * (15 - 1) + 1;                                  // 隕石の速さ
-        //     this.obstacles.push(obstacle);
-        // }
     }
 
     /**
@@ -38,10 +28,10 @@ export class Obstacle extends Ball {
 
     draw(player) {
         this.y += this.speed;              // それぞれのスピードで動かす
-        if (Obstacle.collision(player, this) === true) {  // 衝突判定結果がtrueなら
-            // window.clearInterval(this.timer);            // タイマーを止める
-            alert("GAME OVER");
-        }
+        // if (Obstacle.collision(player, this) === true) {  // 衝突判定結果がtrueなら
+        //     // window.clearInterval(this.timer);            // タイマーを止める
+        //     alert("GAME OVER");
+        // }
         if (this.y > this.canvas.height + this.radius) {  // もし隕石が画面から消えたら
             // randomizeMeteo(this);           // 位置やサイズを初期化・ランダム化する
         }
