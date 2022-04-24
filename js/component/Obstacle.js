@@ -28,4 +28,19 @@ export class Obstacle extends Ball {
      */
     init() {
     }
+
+    draw(deviceMotion, canvas, context) {
+        this.y += this.speed;              // それぞれのスピードで動かす
+        // if(collision(player, this) === true) {  // 衝突判定結果がtrueなら
+        //     window.clearInterval(this.timer);            // タイマーを止める
+        // }
+        if (this.y > canvas.height + this.radius) {  // もし隕石が画面から消えたら
+            // randomizeMeteo(this);           // 位置やサイズを初期化・ランダム化する
+        }
+        context.beginPath();                    // 描画開始
+        context.arc(this.x, this.y, this.radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
+            0, 2 * Math.PI);            // 角度の単位はラジアン（2π = 360度）で指定
+        context.fillStyle = this.color      // 塗りつぶす色の設定
+        context.fill();                         // 塗る
+    }
 }
