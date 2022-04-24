@@ -6,12 +6,12 @@ export class DeviceMotion {
      * コンストラクタ
      */
     constructor() {
-        alert('ok');
+        alert('okaa');
         // ボタンクリックでrequestDeviceMotionPermission実行
-        // const startButton = document.getElementById("start-button")
-        // startButton.addEventListener('click', this.requestDeviceMotionPermission, false)
+        const startButton = document.getElementById("start-button")
+        startButton.addEventListener('click', this.requestDeviceMotionPermission, false)
         // this.requestDeviceMotionPermission();
-        window.onload = () => { this.requestDeviceMotionPermission }
+        // window.onload = () => { this.requestDeviceMotionPermission }
         this.aX = 0;
         this.aY = 0;
         this.coefficient = ["iPhone", "iPad", "iPod"].includes(navigator.platform) ? -1 : 1;
@@ -21,7 +21,7 @@ export class DeviceMotion {
      * スマホの加速度センサを取得許可依頼をする
      */
     requestDeviceMotionPermission = () => {
-        alert('init');
+        alert('inita');
 
         if (
             DeviceMotionEvent &&
