@@ -6,6 +6,7 @@ export class DeviceMotion {
      * コンストラクタ
      */
     constructor() {
+        alert('ok');
         this.requestDeviceMotionPermission();
         // window.onload = () => { this.requestDeviceMotionPermission() }
         this.aX = 0;
