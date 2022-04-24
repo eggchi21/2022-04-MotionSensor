@@ -53,10 +53,6 @@ export class Obstacle extends Ball {
         if (randomInteger % 6 == 0) {
             this.y += this.speed;
             this.y += this.speed;
-        } else if (randomInteger % 2 == 0) {
-            this.x += this.speed;
-        }  else if (randomInteger % 3 == 0) {
-            this.x -= this.speed;
         }
 
         // 描画開始
