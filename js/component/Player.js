@@ -13,7 +13,7 @@ export class Player extends Ball {
             150,
             200,
             20,
-            "rgb(0, 0, 255)",
+            "rgb(255, 255, 255)",
             3,
             0,
             0

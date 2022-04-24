@@ -2,6 +2,7 @@ import { Player } from '../component/Player.js';
 import { Obstacle } from '../component/Obstacle.js';
 import { Text } from '../component/Text.js';
 import { DeviceMotion } from './DeviceMotion.js';
+import { CalcObject } from '../util/CalcObject.js';
 
 /**
  * 描画管理クラス
@@ -44,11 +45,16 @@ export class Draw {
      */
     draw() {
         this.timer = window.setInterval(() => {
-            this.text.draw(this.deviceMotion);
             this.player.draw(this.deviceMotion);
             for (var i = 0; i < this.obstacles.length; i++) {
                 this.obstacles[i].draw(this.player);
+                if (CalcObject.isCollision(this.player, this.obstacles[i])) {
+                    this.text.lifeDown();
+                }
             }
+
+            this.text.draw(this.deviceMotion);
+
         }, 110);
     }
 }

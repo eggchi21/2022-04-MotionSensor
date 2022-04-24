@@ -13,7 +13,7 @@ export class Obstacle extends Ball {
             integer * canvas.width / sum + (canvas.width / sum / 2),
             Math.random() * (0 + canvas.height) - canvas.height,
             Math.random() * (canvas.width / sum / 2 - 10) + 10,
-            "rgb(0, 0, 0)",
+            "rgb(215, 0, 0)",
             Math.random() * (15 - 1) + 1,
             0,
             0
@@ -32,10 +32,10 @@ export class Obstacle extends Ball {
         // それぞれのスピードで動かす
         this.y += this.speed;
         // 衝突判定結果がtrueなら
-        if (Obstacle.isCollision(player, this)) {
+        // if (Obstacle.isCollision(player, this)) {
             // window.clearInterval(this.timer);            // タイマーを止める
             // alert("GAME OVER");
-        }
+        // }
         if (this.y > this.canvas.height + this.radius) {
             this.randomize();
         }
