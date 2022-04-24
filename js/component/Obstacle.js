@@ -7,6 +7,10 @@ export class Obstacle extends Ball {
     /**
      * コンストラクタ
      *
+     * @param canvas
+     * @param context
+     * @param sum
+     * @param integer
      */
     constructor(canvas, context, sum, integer) {
         super(
@@ -34,16 +38,25 @@ export class Obstacle extends Ball {
 
     /**
      *  描画する
-     *
-     * @param player
      */
     draw() {
         // それぞれのスピードで動かす
         this.y += this.speed;
 
-        if (this.y > this.canvas.height + this.radius) {
+        if (this.y > this.canvas.height + this.radius || this.x < 0 || this.x > this.canvas.width + this.radius) {
             this.init();
         }
+
+        randomInteger = Math.floor(Math.random() * 6);
+
+        if (randomInteger % 6 == 0) {
+            this.y += this.speed;
+        } else if (randomInteger % 2 == 0) {
+            this.x ++;
+        }  else if (randomInteger % 3 == 0) {
+            this.x --;
+        }
+
 
         // 描画開始
         this.context.beginPath();
