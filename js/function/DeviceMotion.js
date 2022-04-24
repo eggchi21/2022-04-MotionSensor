@@ -6,12 +6,12 @@ export class DeviceMotion {
      * コンストラクタ
      */
     constructor() {
-        alert('okaa');
+        alert('aa');
         // ボタンクリックでrequestDeviceMotionPermission実行
         const startButton = document.getElementById("start-button")
         startButton.addEventListener('click', this.requestDeviceMotionPermission, false)
         // this.requestDeviceMotionPermission();
-        // window.onload = () => { this.requestDeviceMotionPermission }
+        window.onload = () => this.requestDeviceMotionPermission;
         this.aX = 0;
         this.aY = 0;
         this.coefficient = ["iPhone", "iPad", "iPod"].includes(navigator.platform) ? -1 : 1;
