@@ -7,7 +7,9 @@ export class Text {
      *
      */
     constructor() {
-        this.textArea = document.getElementById("txt2");
+        this.score = 0;
+        this.scoreArea = document.getElementById("score");
+        this.motionArea = document.getElementById("motion");
     }
 
     /**
@@ -17,8 +19,10 @@ export class Text {
     }
 
     draw(deviceMotion) {
-        this.textArea.innerHTML = "x: " + deviceMotion.aX + "<br>"         // x軸の値
-            + "y値: " + deviceMotion.aY + "<br>"         // y軸の値
-            + "z: " + deviceMotion.aZ;                 // z軸の値
+        this.score += 1;
+        this.scoreArea.innerHTML = "スコア: " + this.score;
+        this.motionArea.innerHTML = "横の傾き: " + deviceMotion.aX + "<br>"
+            + "縦の傾き: " + deviceMotion.aY + "<br>"
+            + "z: " + deviceMotion.aZ;
     }
 }
