@@ -29,27 +29,44 @@ export class Obstacle extends Ball {
     init() {
     }
 
+    /**
+     *  描画する
+     *
+     * @param player
+     */
     draw(player) {
-        this.y += this.speed;              // それぞれのスピードで動かす
-        if (Obstacle.isCollision(player, this)) {  // 衝突判定結果がtrueなら
+        // それぞれのスピードで動かす
+        this.y += this.speed;
+        // 衝突判定結果がtrueなら
+        if (Obstacle.isCollision(player, this)) {
             // window.clearInterval(this.timer);            // タイマーを止める
             // alert("GAME OVER");
         }
-        if (this.y > this.canvas.height + this.radius) {  // もし隕石が画面から消えたら
-            this.randomize();           // 位置やサイズを初期化・ランダム化する
+        if (this.y > this.canvas.height + this.radius) {
+            this.randomize();
         }
-        this.context.beginPath();                    // 描画開始
-        this.context.arc(this.x, this.y, this.radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
-            0, 2 * Math.PI);            // 角度の単位はラジアン（2π = 360度）で指定
-        this.context.fillStyle = this.color      // 塗りつぶす色の設定
-        this.context.fill();                         // 塗る
+        // 描画開始
+        this.context.beginPath();
+        // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
+        this.context.arc(
+            this.x,
+            this.y,
+            this.radius,
+            0,
+            2 * Math.PI
+        );
+        // 塗りつぶす色の設定
+        this.context.fillStyle = this.color;
+        this.context.fill();
     }
 
+    /**
+     * ランダムな位置・サイズを設定する
+     */
     randomize() {
         this.y = Math.random() * (0 + this.canvas.height) - this.canvas.height;
         this.radius = Math.random() * (this.canvas.width / this.sum / 2 - 10) + 10;
         this.speed = Math.random() * (15 - 1) + 1;
-
     }
 
     /**
