@@ -18,6 +18,14 @@ export class Text {
     }
 
     /**
+     * 初期化
+     */
+    init() {
+        this.score = 0;
+        this.life = 5;
+    }
+
+    /**
      *  描画する
      *
      */

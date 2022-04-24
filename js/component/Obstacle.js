@@ -44,6 +44,7 @@ export class Obstacle extends Ball {
         if (this.y > this.canvas.height + this.radius) {
             this.init();
         }
+
         // 描画開始
         this.context.beginPath();
         // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
