@@ -26,10 +26,16 @@ export class Text {
         this.scoreArea.innerHTML = "スコア: " + this.score;
     }
 
+    /**
+     * ライフを減らす
+     */
     lifeDown(){
         this.life -= 1;
         if (this.life > 0) {
             this.lifeArea.innerHTML = Text.LIFE_OBJECT.repeat(this.life);
+        } else if (this.life == 0) {
+            this.lifeArea.innerHTML = "GAME OVER";
+            alert("GAME OVER");
         }
     }
 }

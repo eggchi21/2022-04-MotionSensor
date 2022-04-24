@@ -41,16 +41,27 @@ export class Draw {
     }
 
     /**
+     * 初期化
+     */
+    init() {
+        this.player.init();
+        for (let i = 0; i < this.obstacles.length; i++) {
+            this.obstacles[i].init();
+        }
+        this.text.init();
+    }
+
+    /**
      * 描画する
      */
     draw() {
         this.timer = window.setInterval(() => {
             this.player.draw(this.deviceMotion);
-            for (var i = 0; i < this.obstacles.length; i++) {
+            for (let i = 0; i < this.obstacles.length; i++) {
                 this.obstacles[i].draw(this.player);
                 if (CalcObject.isCollision(this.player, this.obstacles[i])) {
                     this.text.lifeDown();
-                    this.obstacles[i].randomize();
+                    this.obstacles[i].init();
                 }
             }
 

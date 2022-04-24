@@ -24,6 +24,15 @@ export class Obstacle extends Ball {
     }
 
     /**
+     * 初期化
+     */
+    init() {
+        this.y = Math.random() * (0 + this.canvas.height) - this.canvas.height;
+        this.radius = Math.random() * (this.canvas.width / this.sum / 2 - 10) + 10;
+        this.speed = Math.random() * (15 - 1) + 1;
+    }
+
+    /**
      *  描画する
      *
      * @param player
@@ -33,7 +42,7 @@ export class Obstacle extends Ball {
         this.y += this.speed;
 
         if (this.y > this.canvas.height + this.radius) {
-            this.randomize();
+            this.init();
         }
         // 描画開始
         this.context.beginPath();
@@ -48,29 +57,5 @@ export class Obstacle extends Ball {
         // 塗りつぶす色の設定
         this.context.fillStyle = this.color;
         this.context.fill();
-    }
-
-    /**
-     * ランダムな位置・サイズを設定する
-     */
-    randomize() {
-        this.y = Math.random() * (0 + this.canvas.height) - this.canvas.height;
-        this.radius = Math.random() * (this.canvas.width / this.sum / 2 - 10) + 10;
-        this.speed = Math.random() * (15 - 1) + 1;
-    }
-
-    /**
-     * あたり判定を行う
-     *
-     * @param obj1
-     * @param obj2
-     * @return boolean
-     */
-    static isCollision(obj1, obj2) {
-        const distX = obj1.x - obj2.x;
-        const distY = obj1.y - obj2.y;
-        const dist = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
-
-        return dist < (obj1.radius + obj2.radius)
     }
 }
