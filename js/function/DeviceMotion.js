@@ -15,7 +15,7 @@ export class DeviceMotion {
         this.text = document.getElementById("txt2");
         this.timer = window.setInterval(() => {
             this.displayData();      // displayData 関数を実行
-            alert("!11");
+            // alert("!11");
             // this.drawBall();         // ★drawBall 関数を実行
         }, 10000);
     }
