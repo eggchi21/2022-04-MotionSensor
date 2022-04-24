@@ -9,7 +9,7 @@ export class Obstacle extends Ball {
      *
      */
     constructor(canvas, context, sum, integer) {
-        super();
+        // super();
         this.canvas = canvas;
         this.context = context;
         this.x = integer * this.canvas.width / this.counts + (this.canvas.width / sum / 2);
