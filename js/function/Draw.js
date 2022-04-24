@@ -19,12 +19,12 @@ export class Draw {
         this.obstacles = [];
         this.counts = 5;
         for (var i = 0; i < this.counts; i++) {
-            // const obstacle = new Obstacle(this.canvas, this.context, this.counts, i);
-            // obstacle.x = i * this.canvas.width / this.counts + (this.canvas.width / this.counts / 2);
-            // // obstacle.y = Math.random() * (0 + this.canvas.height) - this.canvas.height; // 隕石のy座標
-            // obstacle.radius = Math.random() * (this.canvas.width / this.counts / 2 - 10) + 10;   // 隕石の半径
-            // obstacle.speed = Math.random() * (15 - 1) + 1;                                  // 隕石の速さ
-            this.obstacles.push(new Obstacle(this.canvas, this.context, this.counts, i));
+            const obstacle = new Obstacle(this.canvas, this.context, this.counts, i);
+            obstacle.x = i * this.canvas.width / this.counts + (this.canvas.width / this.counts / 2);
+            obstacle.y = Math.random() * (0 + this.canvas.height) - this.canvas.height; // 隕石のy座標
+            obstacle.radius = Math.random() * (this.canvas.width / this.counts / 2 - 10) + 10;   // 隕石の半径
+            obstacle.speed = Math.random() * (15 - 1) + 1;                                  // 隕石の速さ
+            this.obstacles.push(obstacle);
         }
 
         this.deviceMotion = new DeviceMotion();

@@ -9,15 +9,15 @@ export class Obstacle extends Ball {
      *
      */
     constructor(canvas, context, sum, integer) {
-        // super();
+        super();
         this.canvas = canvas;
         this.context = context;
-        this.x = integer * this.canvas.width / this.counts + (this.canvas.width / sum / 2);
-        this.color = "rgb(0, 0, 0)";
-        this.y = Math.random() * (0 + this.canvas.height) - this.canvas.height; // 隕石のy座標
-        // obstacle.y = Math.random() * (0 + this.canvas.height) - this.canvas.height; // 隕石のy座標
-        this.radius = Math.random() * (this.canvas.width / sum / 2 - 10) + 10;   // 隕石の半径
-        this.speed = Math.random() * (15 - 1) + 1;                                  // 隕石の速さ
+        // this.x = integer * this.canvas.width / this.counts + (this.canvas.width / sum / 2);
+        // this.color = "rgb(0, 0, 0)";
+        // this.y = Math.random() * (0 + this.canvas.height) - this.canvas.height; // 隕石のy座標
+        // // obstacle.y = Math.random() * (0 + this.canvas.height) - this.canvas.height; // 隕石のy座標
+        // this.radius = Math.random() * (this.canvas.width / sum / 2 - 10) + 10;   // 隕石の半径
+        // this.speed = Math.random() * (15 - 1) + 1;                                  // 隕石の速さ
     }
 
     /**
