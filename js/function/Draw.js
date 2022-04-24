@@ -54,7 +54,7 @@ export class Draw {
                 }
             }
 
-            this.text.draw(this.deviceMotion);
+            this.text.draw();
 
         }, 110);
     }

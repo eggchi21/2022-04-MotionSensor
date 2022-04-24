@@ -14,20 +14,16 @@ export class Text {
         this.score = 0;
         this.life = 5;
         this.scoreArea = document.getElementById("score");
-        this.motionArea = document.getElementById("motion");
         this.lifeArea = document.getElementById("life")
     }
 
     /**
      *  描画する
      *
-     * @param deviceMotion
      */
-    draw(deviceMotion) {
+    draw() {
         this.score += 1;
         this.scoreArea.innerHTML = "スコア: " + this.score;
-        this.motionArea.innerHTML = "横の傾き: " + deviceMotion.aX + "<br>"
-            + "縦の傾き: " + deviceMotion.aY + "<br>";
     }
 
     lifeDown(){
