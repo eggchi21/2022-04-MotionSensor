@@ -64,9 +64,7 @@ export class Draw {
                     this.obstacles[i].init();
                 }
             }
-
             this.text.draw();
-
-        }, 110);
+        }, 40);
     }
 }
