@@ -1,5 +1,5 @@
 /**
- * オブジェクトを計算するクラス
+ * オブジェクトを計算するUtilityクラス
  */
 export class CalcObject {
     /**
