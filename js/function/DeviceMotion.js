@@ -17,7 +17,7 @@ export class DeviceMotion {
             this.displayData();      // displayData 関数を実行
             alert("!11");
             // this.drawBall();         // ★drawBall 関数を実行
-        }, 33);
+        }, 10000);
     }
 
     /**
