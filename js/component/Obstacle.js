@@ -56,7 +56,7 @@ export class Obstacle extends Ball {
         } else if (randomInteger % 2 == 0) {
             this.x ++;
             this.x ++;
-            this.x += this.radius;
+            this.x += this.speed;
         }  else if (randomInteger % 3 == 0) {
             this.x --;
             this.x --;
