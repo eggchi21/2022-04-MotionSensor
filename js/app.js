@@ -1,2 +1,3 @@
 import { Draw } from './function/Draw.js';
-new Draw();
+const draw = new Draw();
+draw.draw();

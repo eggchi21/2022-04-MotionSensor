@@ -7,11 +7,16 @@ import { DeviceMotion } from './DeviceMotion.js';
  * 描画管理クラス
  */
 export class Draw {
+    // 障害物を作成する個数
+    static get OBSTACLE_COUNT() {
+        return 5;
+    }
+
     /**
      * コンストラクタ
      */
     constructor() {
-        // キャンババスのラッパー要素の大きさから、キャンバスの大きさを設定
+        // キャンバスのラッパー要素の大きさから、キャンバスの大きさを設定
         const canvasWrapper = document.getElementById('canvas-wrapper');
         this.canvas = document.getElementById('canvas');
         this.canvas.width = canvasWrapper.offsetWidth;
@@ -23,9 +28,8 @@ export class Draw {
 
         // 障害物クラスのインスタンスを作成
         this.obstacles = [];
-        this.counts = 5;
-        for (var i = 0; i < this.counts; i++) {
-            this.obstacles.push(new Obstacle(this.canvas, this.context, this.counts, i));
+        for (var i = 0; i < Draw.OBSTACLE_COUNT; i++) {
+            this.obstacles.push(new Obstacle(this.canvas, this.context, Draw.OBSTACLE_COUNT, i));
         }
 
         // テキストクラスのインスタンスを作成
@@ -33,7 +37,12 @@ export class Draw {
 
         // スマフォの加速度を取得するクラスのインスタンスを作成
         this.deviceMotion = new DeviceMotion();
+    }
 
+    /**
+     * 描画する
+     */
+    draw() {
         this.timer = window.setInterval(() => {
             this.text.draw(this.deviceMotion);
             this.player.draw(this.deviceMotion);
@@ -41,11 +50,5 @@ export class Draw {
                 this.obstacles[i].draw(this.player);
             }
         }, 110);
-    }
-
-    /**
-     * 初期化
-     */
-    init() {
     }
 }
