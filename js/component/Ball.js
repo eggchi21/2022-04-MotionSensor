@@ -21,7 +21,5 @@ export class Ball {
     init() {
     }
 
-    draw() {
-
-    }
+    draw() {}
 }
