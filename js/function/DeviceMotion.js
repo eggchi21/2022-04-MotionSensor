@@ -11,9 +11,11 @@ export class DeviceMotion {
         this.aY = 0;
         this.aZ = 0;
         this.canvas = document.getElementById('canvas');
+        this.context = this.canvas.getContext('2d');          // ★絵を描く部品を取得
         this.text = document.getElementById("txt2");
         this.timer = window.setInterval(() => {
             this.displayData();      // displayData 関数を実行
+            alert("!11");
             // this.drawBall();         // ★drawBall 関数を実行
         }, 33);
     }
