@@ -6,23 +6,19 @@ export class DeviceMotion {
      * コンストラクタ
      */
     constructor() {
-        // alert('aa');
         // ボタンクリックでrequestDeviceMotionPermission実行
         const startButton = document.getElementById("start-button")
         startButton.addEventListener('click', this.requestDeviceMotionPermission, false)
-        // this.requestDeviceMotionPermission();
-        window.onload = () => this.requestDeviceMotionPermission;
         this.aX = 0;
         this.aY = 0;
         this.coefficient = ["iPhone", "iPad", "iPod"].includes(navigator.platform) ? -1 : 1;
+        this.isPermitted = false;
     }
 
     /**
      * スマホの加速度センサを取得許可依頼をする
      */
     requestDeviceMotionPermission = () => {
-        alert('inita');
-
         if (
             DeviceMotionEvent &&
             typeof DeviceMotionEvent.requestPermission === 'function'
@@ -37,6 +33,7 @@ export class DeviceMotion {
                             this.aX = event.accelerationIncludingGravity.x * this.coefficient;    // x軸の重力加速度（Android と iOSでは正負が逆）
                             this.aY = event.accelerationIncludingGravity.y * this.coefficient;    // y軸の重力加速度（Android と iOSでは正負が逆）
                         });
+                        this.isPermitted = true;
                     } else {
                         // 許可を得られなかった場合の処理
                     }

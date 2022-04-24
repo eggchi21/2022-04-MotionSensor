@@ -56,15 +56,18 @@ export class Draw {
      */
     draw() {
         this.timer = window.setInterval(() => {
-            this.player.draw(this.deviceMotion);
-            for (let i = 0; i < this.obstacles.length; i++) {
-                this.obstacles[i].draw(this.player);
-                if (CalcObject.isCollision(this.player, this.obstacles[i])) {
-                    this.text.lifeDown();
-                    this.obstacles[i].init();
+            if (this.deviceMotion.isPermitted) {
+                this.player.draw(this.deviceMotion);
+                for (let i = 0; i < this.obstacles.length; i++) {
+                    this.obstacles[i].draw(this.player);
+                    if (CalcObject.isCollision(this.player, this.obstacles[i])) {
+                        this.text.lifeDown();
+                        this.obstacles[i].init();
+                    }
                 }
+                this.text.draw();
             }
-            this.text.draw();
+
         }, 40);
     }
 }
