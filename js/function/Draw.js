@@ -87,11 +87,11 @@ export class Draw {
             if(this.obstacles[i].y > canvas.height + this.obstacles[i].radius) {  // もし隕石が画面から消えたら
                 // randomizeMeteo(this.obstacles[i]);           // 位置やサイズを初期化・ランダム化する
             }
-            context.beginPath();                    // 描画開始
-            context.arc(this.obstacles[i].x, this.obstacles[i].y, this.obstacles[i].radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
+            this.context.beginPath();                    // 描画開始
+            this.context.arc(this.obstacles[i].x, this.obstacles[i].y, this.obstacles[i].radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
                         0, 2 * Math.PI);            // 角度の単位はラジアン（2π = 360度）で指定
-            context.fillStyle = this.obstacles[i].color      // 塗りつぶす色の設定
-            context.fill();                         // 塗る
+            this.context.fillStyle = this.obstacles[i].color      // 塗りつぶす色の設定
+            this.context.fill();                         // 塗る
         }
     }
 }
