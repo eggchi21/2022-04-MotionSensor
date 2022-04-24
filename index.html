@@ -10,50 +10,49 @@
     <button id="start-button">ボタン</button>
     <div id="txt">ここにデータを表示</div>             <!-- データを表示するdiv要素 -->
     <canvas id="canvas" width="300" height="400"></canvas>  <!-- ★絵を描くcanvas要素 -->
-     
     <script>
-        console.log('init');
-        const requestDeviceOrientationPermission = () => {
-        if (
-            DeviceOrientationEvent &&
-            typeof DeviceOrientationEvent.requestPermission === 'function'
-        ) {
-            // iOS 13+ の Safari
-            // 許可を取得
-            DeviceOrientationEvent.requestPermission()
-            .then(permissionState => {
-                console.log('permissionState', permissionState);
+    //     console.log('init');
+    //     const requestDeviceOrientationPermission = () => {
+    //     if (
+    //         DeviceOrientationEvent &&
+    //         typeof DeviceOrientationEvent.requestPermission === 'function'
+    //     ) {
+    //         // iOS 13+ の Safari
+    //         // 許可を取得
+    //         DeviceOrientationEvent.requestPermission()
+    //         .then(permissionState => {
+    //             console.log('permissionState', permissionState);
 
-            if (permissionState === 'granted') {
-                console.log('OK');
-                // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                window.addEventListener('deviceorientation', (event) => {
-                    // console.log('event', event);
-                    var hoge = document.querySelector("#txt");
-                    var absolute = event.absolute;
-                    var alpha    = event.alpha;
-                    var beta     = event.beta;
-                    var gamma    = event.gamma;
-                    hoge.innerHTML =
-                    "absolute: " + absolute + "<br>"
-                    + "alpha: " + alpha + "<br>"
-                    + "beta: " + beta + "<br>"
-                    + "gamma: " + gamma + "<br>";
-                });
-            } else {
-                // 許可を得られなかった場合の処理
-            }
-            }).catch(console.error) // https通信でない場合などで許可を取得できなかった場合
-                // console.log('エラー');
+    //         if (permissionState === 'granted') {
+    //             console.log('OK');
+    //             // 許可を得られた場合、devicemotionをイベントリスナーに追加
+    //             window.addEventListener('deviceorientation', (event) => {
+    //                 // console.log('event', event);
+    //                 var hoge = document.querySelector("#txt");
+    //                 var absolute = event.absolute;
+    //                 var alpha    = event.alpha;
+    //                 var beta     = event.beta;
+    //                 var gamma    = event.gamma;
+    //                 hoge.innerHTML =
+    //                 "absolute: " + absolute + "<br>"
+    //                 + "alpha: " + alpha + "<br>"
+    //                 + "beta: " + beta + "<br>"
+    //                 + "gamma: " + gamma + "<br>";
+    //             });
+    //         } else {
+    //             // 許可を得られなかった場合の処理
+    //         }
+    //         }).catch(console.error) // https通信でない場合などで許可を取得できなかった場合
+    //             // console.log('エラー');
 
-            } else {
-                console.log('上記以外のブラウザ');
-                // 上記以外のブラウザ
-            }
-        }
-    // ボタンクリックでrequestDeviceOrientationPermission実行
-    const startButton = document.getElementById("start-button")
-    startButton.addEventListener('click', requestDeviceOrientationPermission, false)
+    //         } else {
+    //             console.log('上記以外のブラウザ');
+    //             // 上記以外のブラウザ
+    //         }
+    //     }
+    // // ボタンクリックでrequestDeviceOrientationPermission実行
+    // const startButton = document.getElementById("start-button")
+    // startButton.addEventListener('click', requestDeviceOrientationPermission, false)
 
 
     // var alpha = 0, beta = 0, gamma = 0;             // ジャイロの値を入れる変数を3個用意
@@ -104,6 +103,7 @@
     //     context.stroke();                           // 線を描画
     // }
     </script>
+    <script src="js/app.js" type="module"></script>
 </body>
 
 </html>
