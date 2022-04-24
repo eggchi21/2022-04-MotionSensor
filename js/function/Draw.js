@@ -81,9 +81,9 @@ export class Draw {
     drawObstacles() {
         for(var i = 0; i < this.obstacles.length; i++) {     // 全ての隕石について
             this.obstacles[i].y += this.obstacles[i].speed;              // それぞれのスピードで動かす
-            if(collision(player, this.obstacles[i]) === true) {  // 衝突判定結果がtrueなら
-                window.clearInterval(this.timer);            // タイマーを止める
-            }
+            // if(collision(player, this.obstacles[i]) === true) {  // 衝突判定結果がtrueなら
+            //     window.clearInterval(this.timer);            // タイマーを止める
+            // }
             if(this.obstacles[i].y > canvas.height + this.obstacles[i].radius) {  // もし隕石が画面から消えたら
                 // randomizeMeteo(this.obstacles[i]);           // 位置やサイズを初期化・ランダム化する
             }
