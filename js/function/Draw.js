@@ -1,5 +1,5 @@
 import { Player } from '../component/Player.js';
-import { Obstacle } from '../component/Obstacle';
+import { Obstacle } from '../component/Obstacle.js';
 import { DeviceMotion } from './DeviceMotion.js';
 
 /**
