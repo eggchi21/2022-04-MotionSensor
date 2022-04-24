@@ -35,9 +35,9 @@ export class Draw {
             this.text.draw(this.deviceMotion);
             this.player.draw(this.deviceMotion);         // ★drawBall 関数を実行
             for (var i = 0; i < this.obstacles.length; i++) {
-                this.obstacle[i].draw(this.player);
+                this.obstacles[i].draw(this.player);
             }
-        }, 50);
+        }, 110);
     }
 
     /**
