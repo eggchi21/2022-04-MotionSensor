@@ -10,7 +10,7 @@ export class DeviceOrientation {
     }
 
     /**
-     * デバイス
+     * スマホのジャイロセンサを取得許可依頼をする
      */
     requestDeviceOrientationPermission() {
         if (

@@ -13,11 +13,10 @@ export class Text {
     }
 
     /**
-     * 初期化
+     *  描画する
+     *
+     * @param deviceMotion
      */
-    init() {
-    }
-
     draw(deviceMotion) {
         this.score += 1;
         this.scoreArea.innerHTML = "スコア: " + this.score;

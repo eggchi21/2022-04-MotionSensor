@@ -24,12 +24,6 @@ export class Obstacle extends Ball {
     }
 
     /**
-     * 初期化
-     */
-    init() {
-    }
-
-    /**
      *  描画する
      *
      * @param player

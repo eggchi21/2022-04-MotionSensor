@@ -15,11 +15,5 @@ export class Ball {
         this.sy = sy;                         // y方向の加速
     }
 
-    /**
-     * 初期化
-     */
-    init() {
-    }
-
     draw() {}
 }

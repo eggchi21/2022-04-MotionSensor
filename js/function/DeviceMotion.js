@@ -13,7 +13,7 @@ export class DeviceMotion {
     }
 
     /**
-     * デバイス
+     * スマホの加速度センサを取得許可依頼をする
      */
     requestDeviceMotionPermission() {
         if (
