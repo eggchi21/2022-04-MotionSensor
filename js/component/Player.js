@@ -9,7 +9,15 @@ export class Player extends Ball {
      *
      */
     constructor(canvas, context) {
-        super();
+        super(
+            150,
+            200,
+            20,
+            "rgb(0, 0, 255)",
+            3,
+            0,
+            0
+        );
         this.canvas = canvas;
         this.context = context;
     }
