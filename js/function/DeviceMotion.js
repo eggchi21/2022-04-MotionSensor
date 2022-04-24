@@ -5,8 +5,9 @@ export class DeviceMotion {
     /**
      * コンストラクタ
      */
-    constructor() {
+    constructor(player) {
         window.onload = () => { this.requestDeviceMotionPermission() }
+        this.player = player;
         this.aX = 0;
         this.aY = 0;
         this.aZ = 0;
@@ -15,8 +16,8 @@ export class DeviceMotion {
         this.text = document.getElementById("txt2");
         this.timer = window.setInterval(() => {
             this.displayData();      // displayData 関数を実行
-            this.drawBall();         // ★drawBall 関数を実行
-        }, 100);
+            this.drawPlayer();         // ★drawBall 関数を実行
+        }, 50);
     }
 
     /**
@@ -66,26 +67,30 @@ export class DeviceMotion {
     }
 
 
-    drawBall() {
-        var centerX = this.canvas.width / 2;            // canvasの中心のX座標
-        var centerY = this.canvas.height / 2;	        // canvasの中心のY座標
-        var ballRad = 50;                           // ボールの半径
-        var ballColor = "rgb(0, 0, 255)";           // ボールの色
-        var g  = 9.80665;                           // 1Gの時の重力加速度[m/s^2]
-        var d  = centerX / g;                       // 1m/s^2 あたりでボールが動く量
+    drawPlayer() {
         var os = navigator.platform;                // OS名の取得
         if(os === "iPhone" || os === "iPad" || os === "iPod") {     // iOSなら
             this.aX *= -1;                               // 加速度の正負を反転させる
             this.aY *= -1;                               // a *= b は a = a * b の意味
             this.aZ *= -1;
         }
+        this.player.x -= this.player.speed * this.aX;                 // プレイヤのx座標を更新（a -= b は a = a - b の意味）
+        this.player.y += this.player.speed * this.aY;                 // プレイヤのy座標を更新（a += b は a = a + b の意味）
+        if(this.player.x < 0) {                          // xが0未満なら
+            this.player.x = 0;                               // xを0にする（それより左に行かない）
+        } else if(this.player.x > this.canvas.width) {        // xがcanvasの幅以上なら
+            this.player.x = this.canvas.width;                    // xをcanvasの幅の値にする（それより右に行かない）
+        }
+        if(this.player.y < 0) {                          // yが0未満なら
+            this.player.y = 0;                               // yを0にする（それより上に行かない）
+        } else if(this.player.y > this.canvas.height) {       // yがcanvasの高さ以上なら
+            this.player.y = this.canvas.height;                   // yをcanvasの高さの値にする（それより下に行かない）
+        }
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);   // canvasの内容を消す clearRect(x, y, w, h)
         this.context.beginPath();                        // 描画開始
-        this.context.arc(centerX - d * this.aX,               // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
-                    centerY + d * this.aY,               // 加速度xとyに、1m/s^2あたりで動く量dをかける
-                    ballRad - 3 * this.aZ,               // ボールの半径（zに掛けた係数3はテキトー）
+        this.context.arc(this.player.x, this.player.y, this.player.radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
                     0, 2 * Math.PI);                // 角度の単位はラジアン（2π = 360度）で指定
-        this.context.fillStyle = ballColor;              // 塗りつぶす色の設定
-        this.context.fill();                             // 塗る
+        this.context.fillStyle = this.player.color            // 塗りつぶす色の設定
+        this.context.fill();
     }
 }
