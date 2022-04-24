@@ -10,16 +10,30 @@ export class Draw {
      * コンストラクタ
      */
     constructor() {
-        this.player = new Player();
-        this.obstacles = new Obstacle();
-        this.deviceMotion = new DeviceMotion();
-
         this.text = document.getElementById("txt2");
         this.canvas = document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');
+
+        this.player = new Player();
+
+        this.obstacles = [];
+        this.counts = 5;
+        for(var i = 0; i < this.counts; i++) {
+            const obstacle = new Obstacle();
+            obstacle.x = i * this.canvas.width / this.counts + (this.canvas.width / this.counts / 2);
+            obstacle.y = Math.random() * (0 + this.canvas.height) - this.canvas.height; // 隕石のy座標
+            obstacle.radius = Math.random() * (this.canvas.width / this.counts / 2 - 10) + 10;   // 隕石の半径
+            obstacle.speed = Math.random() * (15 - 1) + 1;                                  // 隕石の速さ
+            this.obstacles.push(obstacle);
+        }
+
+        this.deviceMotion = new DeviceMotion();
+
+
         this.timer = window.setInterval(() => {
             this.displayData();      // displayData 関数を実行
             this.drawPlayer();         // ★drawBall 関数を実行
+            this.drawObstacles();
         }, 50);
     }
 
@@ -62,5 +76,22 @@ export class Draw {
                     0, 2 * Math.PI);                // 角度の単位はラジアン（2π = 360度）で指定
         this.context.fillStyle = this.player.color;            // 塗りつぶす色の設定
         this.context.fill();
+    }
+
+    drawObstacles() {
+        for(var i = 0; i < this.obstacles.length; i++) {     // 全ての隕石について
+            this.obstacles[i].y += this.obstacles[i].speed;              // それぞれのスピードで動かす
+            if(collision(player, this.obstacles[i]) === true) {  // 衝突判定結果がtrueなら
+                window.clearInterval(this.timer);            // タイマーを止める
+            }
+            if(this.obstacles[i].y > canvas.height + this.obstacles[i].radius) {  // もし隕石が画面から消えたら
+                // randomizeMeteo(this.obstacles[i]);           // 位置やサイズを初期化・ランダム化する
+            }
+            context.beginPath();                    // 描画開始
+            context.arc(this.obstacles[i].x, this.obstacles[i].y, this.obstacles[i].radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
+                        0, 2 * Math.PI);            // 角度の単位はラジアン（2π = 360度）で指定
+            context.fillStyle = this.obstacles[i].color      // 塗りつぶす色の設定
+            context.fill();                         // 塗る
+        }
     }
 }
