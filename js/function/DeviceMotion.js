@@ -1,5 +1,5 @@
 /**
- * 
+ * スマホの加速度センサの情報を管理する
  */
 export class DeviceMotion {
     /**
@@ -15,32 +15,30 @@ export class DeviceMotion {
     init() {
     }
 
+    /**
+     * デバイス
+     */
     requestDeviceMotionPermission() {
         if (
-            DeviceOrientationEvent &&
-            typeof DeviceOrientationEvent.requestPermission === 'function'
+            DeviceMotionEvent &&
+            typeof DeviceMotionEvent.requestPermission === 'function'
         ) {
             // iOS 13+ の Safari
             // 許可を取得
-            DeviceOrientationEvent.requestPermission()
+            DeviceMotionEvent.requestPermission()
                 .then(permissionState => {
                     console.log('permissionState', permissionState);
 
                     if (permissionState === 'granted') {
-                        console.log('OK');
                         // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                        window.addEventListener('deviceorientation', (event) => {
-                            // console.log('event', event);
-                            var hoge = document.querySelector("#txt");
-                            var absolute = event.absolute;
-                            var alpha = event.alpha;
-                            var beta = event.beta;
-                            var gamma = event.gamma;
-                            hoge.innerHTML =
-                                "absolute: " + absolute + "<br>"
-                                + "alpha: " + alpha + "<br>"
-                                + "beta: " + beta + "<br>"
-                                + "gamma: " + gamma + "<br>";
+                        window.addEventListener('devicemotion', (event) => {
+                            var hoge = document.querySelector("#txt2");
+                            var aX = event.accelerationIncludingGravity.x;    // x軸の重力加速度（Android と iOSでは正負が逆）
+                            var aY = event.accelerationIncludingGravity.y;    // y軸の重力加速度（Android と iOSでは正負が逆）
+                            var aZ = event.accelerationIncludingGravity.z;    // z軸の重力加速度（Android と iOSでは正負が逆）
+                            hoge.innerHTML = "x: " + aX + "<br>"         // x軸の値
+                            + "y: " + aY + "<br>"         // y軸の値
+                            + "z: " + aZ;                 // z軸の値
                         });
                     } else {
                         // 許可を得られなかった場合の処理
