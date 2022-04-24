@@ -7,7 +7,7 @@ const canvas = new Canvas();
 
 // const deviceOrientation = new DeviceOrientation();
 const deviceMotion = new DeviceMotion(
-    new Ball()
+    new Ball(),
     canvas
 );
 
