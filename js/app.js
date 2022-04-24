@@ -1,4 +1,4 @@
-import { Canvas } from './component/Canvas';
+import { Canvas } from './component/Canvas.js';
 import { DeviceOrientation } from './function/DeviceOrientation.js';
 import { DeviceMotion } from './function/DeviceMotion.js';
 import { Ball } from './component/Ball.js';
