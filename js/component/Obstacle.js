@@ -31,7 +31,7 @@ export class Obstacle extends Ball {
      * 初期化
      */
     init() {
-        Math.floor(Math.random() * this.sum) * canvas.width / sum + (canvas.width / sum / 2),
+        Math.floor(Math.random() * this.sum) * this.canvas.width / this.sum + (this.canvas.width / this.sum / 2),
         this.y = Math.random() * (0 + this.canvas.height) - this.canvas.height;
         this.radius = Math.random() * (this.canvas.width / this.sum / 2 - 10) + 10;
         this.speed = Math.random() * (15 - 1) + 1;
