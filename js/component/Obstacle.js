@@ -15,7 +15,9 @@ export class Obstacle extends Ball {
             Math.random() * (0 + canvas.height / 2) + canvas.height / 2,
             Math.random() * (canvas.width / sum / 2 - 10) + 10,
             "rgb(0, 0, 0)",
-            Math.random() * (15 - 1) + 1
+            Math.random() * (15 - 1) + 1,
+            0,
+            0
         );
         this.canvas = canvas;
         this.context = context;

@@ -33,7 +33,7 @@ export class Draw {
 
         this.timer = window.setInterval(() => {
             this.text.draw(this.deviceMotion);
-            // this.player.draw(this.deviceMotion);         // ★drawBall 関数を実行
+            this.player.draw(this.deviceMotion);         // ★drawBall 関数を実行
             for (var i = 0; i < this.obstacles.length; i++) {
             // console.log('timer', this.obstacles[i]);
 
