@@ -8,6 +8,7 @@ const canvas = new Canvas();
 // const deviceOrientation = new DeviceOrientation();
 const deviceMotion = new DeviceMotion(
     new Ball()
+    canvas
 );
 
 // deviceOrientation.init();

@@ -73,8 +73,10 @@ export class DeviceMotion {
             this.aY *= -1;                               // a *= b は a = a * b の意味
             this.aZ *= -1;
         }
-        this.player.x -= this.player.speed * this.aX;                 // プレイヤのx座標を更新（a -= b は a = a - b の意味）
-        this.player.y += this.player.speed * this.aY;                 // プレイヤのy座標を更新（a += b は a = a + b の意味）
+        this.player.sx += 0.2 * this.aX;
+        this.player.sy += 0.2 * this.aY; 
+        this.player.x -= this.player.speed * this.aX + this.player.sx;                 // プレイヤのx座標を更新（a -= b は a = a - b の意味）
+        this.player.y += this.player.speed * this.aY + this.player.sy;                 // プレイヤのy座標を更新（a += b は a = a + b の意味）
         if(this.player.x < 0) {                          // xが0未満なら
             this.player.x = 0;                               // xを0にする（それより左に行かない）
         } else if(this.player.x > this.canvas.area.width) {        // xがcanvasの幅以上なら
