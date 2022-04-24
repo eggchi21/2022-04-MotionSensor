@@ -42,7 +42,7 @@ export class Text {
         if (this.life > 0) {
             this.lifeArea.innerHTML = Text.LIFE_OBJECT.repeat(this.life);
         } else if (this.life == 0) {
-            this.lifeArea.innerHTML = "GAME OVER";
+            this.init();
             alert("GAME OVER");
         }
     }
