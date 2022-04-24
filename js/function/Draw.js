@@ -50,6 +50,7 @@ export class Draw {
                 this.obstacles[i].draw(this.player);
                 if (CalcObject.isCollision(this.player, this.obstacles[i])) {
                     this.text.lifeDown();
+                    this.obstacles[i].randomize();
                 }
             }
 

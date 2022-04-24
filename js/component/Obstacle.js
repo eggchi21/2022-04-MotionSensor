@@ -28,14 +28,10 @@ export class Obstacle extends Ball {
      *
      * @param player
      */
-    draw(player) {
+    draw() {
         // それぞれのスピードで動かす
         this.y += this.speed;
-        // 衝突判定結果がtrueなら
-        // if (Obstacle.isCollision(player, this)) {
-            // window.clearInterval(this.timer);            // タイマーを止める
-            // alert("GAME OVER");
-        // }
+
         if (this.y > this.canvas.height + this.radius) {
             this.randomize();
         }
