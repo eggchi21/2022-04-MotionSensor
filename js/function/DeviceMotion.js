@@ -6,7 +6,7 @@ export class DeviceMotion {
      * コンストラクタ
      */
     constructor() {
-        alert('aa');
+        // alert('aa');
         // ボタンクリックでrequestDeviceMotionPermission実行
         const startButton = document.getElementById("start-button")
         startButton.addEventListener('click', this.requestDeviceMotionPermission, false)
