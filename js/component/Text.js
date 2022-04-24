@@ -42,8 +42,8 @@ export class Text {
         if (this.life > 0) {
             this.lifeArea.innerHTML = Text.LIFE_OBJECT.repeat(this.life);
         } else if (this.life == 0) {
+            alert("GAME OVER" + " スコア: " + this.score);
             this.init();
-            alert("GAME OVER");
         }
     }
 }
