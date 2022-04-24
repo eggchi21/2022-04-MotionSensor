@@ -20,6 +20,7 @@ export class Obstacle extends Ball {
         );
         this.canvas = canvas;
         this.context = context;
+        this.sum = sum;
     }
 
     /**
@@ -30,9 +31,9 @@ export class Obstacle extends Ball {
 
     draw(player) {
         this.y += this.speed;              // それぞれのスピードで動かす
-        if (Obstacle.collision(player, this) === true) {  // 衝突判定結果がtrueなら
+        if (Obstacle.isCollision(player, this)) {  // 衝突判定結果がtrueなら
             // window.clearInterval(this.timer);            // タイマーを止める
-            alert("GAME OVER");
+            // alert("GAME OVER");
         }
         if (this.y > this.canvas.height + this.radius) {  // もし隕石が画面から消えたら
             // randomizeMeteo(this);           // 位置やサイズを初期化・ランダム化する
@@ -44,8 +45,21 @@ export class Obstacle extends Ball {
         this.context.fill();                         // 塗る
     }
 
+    randomize() {
+        this.y = Math.random() * (0 + this.canvas.height) - this.canvas.height;
+        this.radius = Math.random() * (this.canvas.width / this.sum / 2 - 10) + 10;
+        this.speed = Math.random() * (15 - 1) + 1;
 
-    static collision(obj1, obj2) {
+    }
+
+    /**
+     * あたり判定を行う
+     *
+     * @param obj1
+     * @param obj2
+     * @return boolean
+     */
+    static isCollision(obj1, obj2) {
         const distX = obj1.x - obj2.x;
         const distY = obj1.y - obj2.y;
         const dist = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
