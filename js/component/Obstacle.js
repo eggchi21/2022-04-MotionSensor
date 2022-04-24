@@ -36,7 +36,7 @@ export class Obstacle extends Ball {
             // alert("GAME OVER");
         }
         if (this.y > this.canvas.height + this.radius) {  // もし隕石が画面から消えたら
-            // randomizeMeteo(this);           // 位置やサイズを初期化・ランダム化する
+            this.randomize();           // 位置やサイズを初期化・ランダム化する
         }
         this.context.beginPath();                    // 描画開始
         this.context.arc(this.x, this.y, this.radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
