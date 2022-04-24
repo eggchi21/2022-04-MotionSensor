@@ -7,6 +7,9 @@ export class DeviceMotion {
      */
     constructor() {
         alert('ok');
+        // ボタンクリックでrequestDeviceMotionPermission実行
+        const startButton = document.getElementById("start-button")
+        startButton.addEventListener('click', this.requestDeviceMotionPermission, false)
         this.requestDeviceMotionPermission();
         // window.onload = () => { this.requestDeviceMotionPermission() }
         this.aX = 0;
@@ -17,7 +20,7 @@ export class DeviceMotion {
     /**
      * スマホの加速度センサを取得許可依頼をする
      */
-    requestDeviceMotionPermission() {
+    requestDeviceMotionPermission = () => {
         if (
             DeviceMotionEvent &&
             typeof DeviceMotionEvent.requestPermission === 'function'
