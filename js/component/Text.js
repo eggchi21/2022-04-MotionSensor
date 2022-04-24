@@ -22,7 +22,6 @@ export class Text {
         this.score += 1;
         this.scoreArea.innerHTML = "スコア: " + this.score;
         this.motionArea.innerHTML = "横の傾き: " + deviceMotion.aX + "<br>"
-            + "縦の傾き: " + deviceMotion.aY + "<br>"
-            + "z: " + deviceMotion.aZ;
+            + "縦の傾き: " + deviceMotion.aY + "<br>";
     }
 }

@@ -10,12 +10,6 @@ export class DeviceOrientation {
     }
 
     /**
-     * 初期化
-     */
-    init() {
-    }
-
-    /**
      * デバイス
      */
     requestDeviceOrientationPermission() {
@@ -27,7 +21,6 @@ export class DeviceOrientation {
             // 許可を取得
             DeviceOrientationEvent.requestPermission()
                 .then(permissionState => {
-
                     if (permissionState === 'granted') {
                         // 許可を得られた場合、devicemotionをイベントリスナーに追加
                         window.addEventListener('deviceorientation', (event) => {
@@ -47,11 +40,8 @@ export class DeviceOrientation {
                         // 許可を得られなかった場合の処理
                     }
                 }).catch(console.error) // https通信でない場合などで許可を取得できなかった場合
-            // console.log('エラー');
-
         } else {
             console.log('上記以外のブラウザ');
-            // 上記以外のブラウザ
         }
     }
 }
