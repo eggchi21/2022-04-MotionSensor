@@ -47,7 +47,7 @@ export class Obstacle extends Ball {
             this.init();
         }
 
-        randomInteger = Math.floor(Math.random() * 6);
+        const randomInteger = Math.floor(Math.random() * 6);
 
         if (randomInteger % 6 == 0) {
             this.y += this.speed;
