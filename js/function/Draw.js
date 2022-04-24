@@ -35,7 +35,7 @@ export class Draw {
         this.timer = window.setInterval(() => {
             this.text.draw(this.deviceMotion);
             // this.displayData();      // displayData 関数を実行
-            this.drawPlayer();         // ★drawBall 関数を実行
+            this.player.draw(this.deviceMotion, this.canvas, this.context);         // ★drawBall 関数を実行
             this.drawObstacles();
         }, 50);
     }
@@ -52,28 +52,28 @@ export class Draw {
     //         + "z: " + this.deviceMotion.aZ;                 // z軸の値
     // }
 
-    drawPlayer() {
-        this.player.sx += 0.2 * this.deviceMotion.aX;
-        this.player.sy += 0.2 * this.deviceMotion.aY;
-        this.player.x -= this.player.speed * this.deviceMotion.aX + this.player.sx;                 // プレイヤのx座標を更新（a -= b は a = a - b の意味）
-        this.player.y += this.player.speed * this.deviceMotion.aY + this.player.sy;                 // プレイヤのy座標を更新（a += b は a = a + b の意味）
-        if (this.player.x < 0) {                          // xが0未満なら
-            this.player.x = 0;                               // xを0にする（それより左に行かない）
-        } else if (this.player.x > this.canvas.width) {        // xがcanvasの幅以上なら
-            this.player.x = this.canvas.width;                    // xをcanvasの幅の値にする（それより右に行かない）
-        }
-        if (this.player.y < 0) {                          // yが0未満なら
-            this.player.y = 0;                               // yを0にする（それより上に行かない）
-        } else if (this.player.y > this.canvas.height) {       // yがcanvasの高さ以上なら
-            this.player.y = this.canvas.height;                   // yをcanvasの高さの値にする（それより下に行かない）
-        }
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);   // canvasの内容を消す clearRect(x, y, w, h)
-        this.context.beginPath();                        // 描画開始
-        this.context.arc(this.player.x, this.player.y, this.player.radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
-            0, 2 * Math.PI);                // 角度の単位はラジアン（2π = 360度）で指定
-        this.context.fillStyle = this.player.color;            // 塗りつぶす色の設定
-        this.context.fill();
-    }
+    // drawPlayer() {
+    //     this.player.sx += 0.2 * this.deviceMotion.aX;
+    //     this.player.sy += 0.2 * this.deviceMotion.aY;
+    //     this.player.x -= this.player.speed * this.deviceMotion.aX + this.player.sx;                 // プレイヤのx座標を更新（a -= b は a = a - b の意味）
+    //     this.player.y += this.player.speed * this.deviceMotion.aY + this.player.sy;                 // プレイヤのy座標を更新（a += b は a = a + b の意味）
+    //     if (this.player.x < 0) {                          // xが0未満なら
+    //         this.player.x = 0;                               // xを0にする（それより左に行かない）
+    //     } else if (this.player.x > this.canvas.width) {        // xがcanvasの幅以上なら
+    //         this.player.x = this.canvas.width;                    // xをcanvasの幅の値にする（それより右に行かない）
+    //     }
+    //     if (this.player.y < 0) {                          // yが0未満なら
+    //         this.player.y = 0;                               // yを0にする（それより上に行かない）
+    //     } else if (this.player.y > this.canvas.height) {       // yがcanvasの高さ以上なら
+    //         this.player.y = this.canvas.height;                   // yをcanvasの高さの値にする（それより下に行かない）
+    //     }
+    //     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);   // canvasの内容を消す clearRect(x, y, w, h)
+    //     this.context.beginPath();                        // 描画開始
+    //     this.context.arc(this.player.x, this.player.y, this.player.radius,  // 円を描く arc(x, y, 半径, 開始角度, 終了角度)
+    //         0, 2 * Math.PI);                // 角度の単位はラジアン（2π = 360度）で指定
+    //     this.context.fillStyle = this.player.color;            // 塗りつぶす色の設定
+    //     this.context.fill();
+    // }
 
     drawObstacles() {
         for (var i = 0; i < this.obstacles.length; i++) {     // 全ての隕石について
