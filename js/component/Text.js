@@ -23,6 +23,8 @@ export class Text {
     init() {
         this.score = 0;
         this.life = 5;
+        this.scoreArea.innerHTML = "スコア: " + this.score;
+        this.lifeArea.innerHTML = Text.LIFE_OBJECT.repeat(this.life);
     }
 
     /**
